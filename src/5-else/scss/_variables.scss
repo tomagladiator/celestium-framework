@@ -1,0 +1,25 @@
+//	Breakpoint
+$breakpoint-small: 320px;
+$breakpoint-medium: 730px;
+$breakpoint-large: 1200px;
+$retina: min-resolution 1.5dppx;
+
+//	Path
+$img-path: "../img/";
+$fonts-path: "../fonts/";
+
+// Svg
+$all-type-svg: "path, polygon, line, circle, polyline, text, ellipse, rect";
+
+//  Color
+$dummy: #c532df;
+$black: black;
+$white: white;
+
+//	Fonts
+$roboto-regular: "roboto-regular", "Helvetica";
+$roboto-black: "roboto-black", "Helvetica";
+
+// forms
+$all-type-button:  "button, [type='button'], [type='reset'], [type='submit']";
+$all-type-text-inputs: "[type='color'], [type='date'], [type='datetime'], [type='datetime-local'], [type='email'], [type='month'], [type='number'], [type='password'], [type='search'], [type='tel'], [type='text'], [type='time'], [type='url'], [type='week'], input:not([type]), textarea" 

@@ -1,0 +1,79 @@
+fieldset {
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+legend {
+    margin-bottom: 5px;
+    font-weight: 600;
+    padding: 0;
+}
+
+label {
+    margin-bottom: 5px;
+    display: block;
+}
+
+input,
+select {
+    font-family: $roboto-regular;
+    font-size: 15px;
+    display: block;
+}
+
+#{$all-type-text-inputs},
+select[multiple] {
+    font-family: $roboto-regular;
+    background-color: $white;
+    border: 1px solid $dummy;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    font-size: 15px;
+    padding: 10px;
+    width: 100%;
+
+    &:hover {
+        border-color: shade($dummy, 20%);
+    }
+
+    &:focus {
+        border-color: $dummy;
+        outline: none;
+    }
+
+    &:disabled {
+        background-color: shade($white, 5%);
+        cursor: not-allowed;
+
+        &:hover {
+            border: $dummy;
+        }
+    }
+}
+
+textarea {
+    resize: vertical;
+}
+
+[type="search"] {
+    appearance: none;
+}
+
+[type="checkbox"],
+[type="radio"] {
+    margin-right: 5px;
+    display: inline;
+}
+
+[type="file"] {
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+select {
+    margin-bottom: 5px;
+    max-width: 100%;
+    width: auto;
+}

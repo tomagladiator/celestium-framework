@@ -1,0 +1,56 @@
+.P--styleguide {
+    padding: 100px 20px;
+
+    .desc {
+        background-color: rgba(74, 255, 255, 0.16);
+        border: 1px dashed #4affff;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .desc li ul li,
+    .desc li {
+        font-family: monospace;
+        font-size: 12px;
+        color: $black;
+    }
+
+    .desc li:before {
+        display: none;
+    }
+
+    .desc ul {
+        list-style: square;
+        margin-bottom: 0;
+    }
+
+    .colors {
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+        width: 100%;
+    }
+
+    .color {
+        position: relative;
+        height: 10rem;
+        width: 100%;
+    }
+
+    .code-color {
+        background-color: #fff;
+        position: absolute;
+        padding: 5px;
+        bottom: 0;
+    }
+
+    hr.styleguided {
+        border-top: dashed 1px #4affff;
+        border-bottom: 0;
+        border-right: 0;
+        border-left: 0;
+        margin: 40px 0;
+        height: 1px;
+    }
+}

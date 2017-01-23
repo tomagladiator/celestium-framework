@@ -1,0 +1,304 @@
+// triangle
+@mixin triangle( $direction: up, $color: currentColor, $width: 1rem, $height: ($width / 2) ) {
+     @if not index( "up" "up-right" "right" "down-right" "down" "down-left" "left" "up-left", $direction ){
+        @error "Direction must be `up`, `up-right`, `right`, `down-right`, " + "`down`, `down-left`, `left` or `up-left`.";
+    }
+
+    @else if not _is-color($color) {
+         @error"`#{$color}` is not a valid color for the `$color` argument in " + "the `triangle` mixin.";
+    }
+
+    @else {
+        border-style: solid;
+        height: 0;
+        width: 0;
+
+        @if $direction == "up" {
+            border-color: transparent transparent $color;
+            border-width: 0 ($width / 2) $height;
+        }
+
+        @else if $direction == "up-right" {
+            border-color: transparent $color transparent transparent;
+            border-width: 0 $width $width 0;
+        }
+
+        @else if $direction == "right" {
+            border-color: transparent transparent transparent $color;
+            border-width: ($height / 2) 0 ($height / 2) $width;
+        }
+
+        @else if $direction == "down-right" {
+            border-color: transparent transparent $color;
+            border-width: 0 0 $width $width;
+        }
+
+        @else if $direction == "down" {
+            border-color: $color transparent transparent;
+            border-width: $height ($width / 2) 0;
+        }
+
+        @else if $direction == "down-left" {
+            border-color: transparent transparent transparent $color;
+            border-width: $width 0 0 $width;
+        }
+
+        @else if $direction == "left" {
+            border-color: transparent $color transparent transparent;
+            border-width: ($height / 2) $width ($height / 2) 0;
+        }
+
+        @else if $direction == "up-left" {
+            border-color: $color transparent transparent;
+            border-width: $width $width 0 0;
+        }
+    }
+}
+
+//  general
+.U--text-align-left {
+    text-align: left !important;
+}
+
+.U--text-align-right {
+    text-align: right !important;
+}
+
+.U--text-align-center {
+    text-align: center !important;
+}
+
+.U--relative {
+    position: relative !important;
+}
+
+.U--text-transform-none {
+    text-transform: none !important;
+}
+
+.U--lowercase {
+    text-transform: lowercase !important;
+}
+
+.U--uppercase {
+    text-transform: uppercase !important;
+}
+
+.U--capitalize {
+    text-transform: capitalize !important;
+}
+
+.U--bold {
+    font-weight: bold !important;
+}
+
+.U--italic {
+    font-style: italic !important;
+}
+
+.U--underline {
+    text-decoration: underline !important;
+}
+
+.U--overflow-hidden {
+    overflow: hidden !important;
+}
+
+.U--hide {
+    display: none !important;
+}
+
+.U--w--50 {
+    width: 50% !important;
+}
+
+.U--w--100 {
+    width: 100% !important;
+}
+
+.U--h--100 {
+    height: 100% !important;
+}
+
+//  margin / padding
+@mixin generate-spacing-classes($space-amounts: ()) {
+    @each $space in $space-amounts {
+        .U--m#{nth($space, 3)}--#{nth($space, 1)} {
+            margin-#{nth($space, 2)}: #{nth($space, 1)}px !important;
+        }
+
+        .U--m--#{nth($space, 1)} {
+            margin: #{nth($space, 1)}px !important;
+        }
+
+        .U--p#{nth($space, 3)}--#{nth($space, 1)} {
+            padding-#{nth($space, 2)}: #{nth($space, 1)}px !important;
+        }
+
+        .U--p--#{nth($space, 1)} {
+            padding: #{nth($space, 1)}px !important;
+        }
+    }
+}
+
+@include generate-spacing-classes((0 left l, 10 left l, 20 left l, 40 left l));
+
+@include generate-spacing-classes((0 right r, 10 right r, 20 right r, 40 right r));
+
+@include generate-spacing-classes((0 bottom b, 10 bottom b, 20 bottom b, 40 bottom b));
+
+@include generate-spacing-classes((0 top t, 10 top t, 20 top t, 40 top t));
+
+//  colors
+@mixin generate-colors($color-amounts: ()) {
+    @each $color in $color-amounts {
+        .U--bg--#{nth($color, 1)} {
+            background-color: #{nth($color, 2)} !important;
+        }
+    }
+
+    @each $color in $color-amounts {
+        .U--#{nth($color, 1)} {
+            color: #{nth($color, 2)} !important;
+        }
+    }
+}
+
+@include generate-colors((black $black, white $white, dummy $dummy));
+
+//  fonts
+@mixin generate-fonts($font-amounts: ()) {
+    @each $font in $font-amounts {
+        .U--#{nth($font, 1)} {
+            font-family: #{nth($font, 2)} !important;
+        }
+    }
+}
+
+@include generate-fonts((roboto-regular $roboto-regular, roboto-black $roboto-black));
+
+//  fonts-size
+@for $fontSize from 9 through 30 {
+    .U--fs--#{$fontSize} {
+        font-size: #{$fontSize}px !important;
+    }
+}
+
+//  svg
+.U--fill-black {
+    #{$all-type-svg} {
+        fill: $black;
+    }
+}
+
+.U--fill-white {
+    #{$all-type-svg} {
+        fill: $white;
+    }
+}
+
+//  flexbox
+.U--flex {
+    display: flex !important;
+
+    &.U--flex-justify-center {
+        justify-content: center !important;
+    }
+
+    &.U--flex-justify-between {
+        justify-content: space-between !important;
+    }
+
+    &.U--flex-justify-end {
+        justify-content: flex-end !important;
+    }
+
+    &.U--flex-align-center {
+        align-items: center !important;
+    }
+
+    &.U--flex-wrap {
+        flex-wrap: wrap !important;
+    }
+}
+
+// breakpoint
+@mixin breakpoint-small {
+	@media (min-width: #{$breakpoint-small}){
+		@content;
+	}
+}
+
+@mixin breakpoint-medium {
+	@media (min-width: #{$breakpoint-medium}){
+		@content;
+	}
+}
+
+@mixin breakpoint-large {
+	@media (min-width: #{$breakpoint-large}){
+		@content;
+	}
+}
+
+.U--small-only {
+    @include breakpoint-medium {
+        display: none !important;
+    }
+}
+
+.U--small-medium-only {
+    @include breakpoint-large {
+        display: none !important;
+    }
+}
+
+.U--medium-only {
+    display: none !important;
+
+    @include breakpoint-medium {
+        display: block !important;
+    }
+
+    @include breakpoint-large {
+        display: none !important;
+    }
+}
+
+.U--medium-large-only {
+    display: none !important;
+
+    @include breakpoint-medium {
+        display: block !important;
+    }
+}
+
+.U--large-only {
+    display: none !important;
+
+    @include breakpoint-large {
+        display: block !important;
+    }
+}
+
+//  Accessibility
+.U--screen-reader-only {
+    clip: rect(0 0 0 0);
+    position: absolute;
+    overflow: hidden;
+    margin: -1px;
+    height: 1px;
+    padding: 0;
+    width: 1px;
+    border: 0;
+
+    &.is-focusable:active,
+    &.is-focusable:focus {
+        overflow: visible;
+        position: static;
+        height: auto;
+        width: auto;
+        clip: auto;
+        margin: 0;
+    }
+}
