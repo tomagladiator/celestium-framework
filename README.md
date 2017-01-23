@@ -36,7 +36,7 @@ On commence par développer ce composant par le mobile.
 2. Initialiser le projet (a ne faire qu'une seule fois)
   1. **$ gulp doThisJustOnce**
 
-    *(Gulp va deplacer la librairie sanitize.css dans 'src/scss/5-else/libs/')*
+    *(Gulp va deplacer la librairie sanitize.css dans '5-else/scss/libs/')*
 
 3. Lancer le serveur
   1. **$ gulp**
