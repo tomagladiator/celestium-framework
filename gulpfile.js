@@ -66,7 +66,7 @@ var minify_html = false;
     A - FIRST TIME
 ************************* */
     gulp.task('doThisJustOnce', [
-            'move'
+            'move', 'fonts'
         ] , function() {
     });
 
