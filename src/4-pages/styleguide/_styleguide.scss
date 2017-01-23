@@ -1,10 +1,10 @@
 .P--styleguide {
-    .style-guide{
-        padding: 20px 20px;
+    .style-guide {
+        padding: 20px;
         display: flex;
     }
 
-    .sg--left{
+    .sg--left {
         background-color: #fff;
         padding-top: 20px;
         position: fixed;
@@ -16,7 +16,7 @@
         top: 0;
     }
 
-    .sg--right{
+    .sg--right {
         padding-left: 290px;
     }
 
@@ -28,8 +28,8 @@
         padding: 20px;
     }
 
-    .desc li ul li,
-    .desc li {
+    .desc li,
+    .desc li ul li {
         font-family: monospace;
         font-size: 12px;
         color: $black;
@@ -42,6 +42,7 @@
     .desc ul {
         list-style: square;
         margin-bottom: 0;
+        margin-left: 20px;
     }
 
     .colors {
