@@ -1,12 +1,13 @@
 # Celestium Framework
 Framework de base sans librairies
 
-l'origine de ce framework est d'offrir au developpeur front-end les meilleurs outils pour commencer un projet de toute taille.
+l'origine de ce framework est d'offrir aux developpeurs front-end les meilleurs outils pour commencer un projet de toute taille.
 Plusieurs concepts sont présents:
 
 **1. Component First**
 
 On commence par développer la composante de manière isolée, elle doit autant que faire ce peut être indépendante.
+C'est la raison pour laquelle chaque composant se trouve dans un dossier avec son JS (typescript), son HTML et son SCSS.
 
 **2. Styleguide First**
 
@@ -35,11 +36,8 @@ On commence par développer ce composant par le mobile.
 2. Initialiser le projet (a ne faire qu'une seule fois)
   1. **$ gulp doThisJustOnce**
 
-    *(Gulp va deplacer la librairie jQuery dans 'src/ts/3-else/libs/')*
-
     *(Gulp va deplacer la librairie sanitize.css dans 'src/scss/5-else/libs/')*
 
-    *(Gulp va deplacer la librairie Bourbon dans 'src/scss/5-else/libs/bourbon/')*
 3. Lancer le serveur
   1. **$ gulp**
 
@@ -60,9 +58,6 @@ On commence par développer ce composant par le mobile.
     *(Gulp va Watch si des changements s'appliquent aux fichiers, si oui, on relance)*
 
 ## Gulp Task
-1. **$ gulp ttf**
-
-  *(Gulp va convertir les fonts TTF en TTF, WOFF, SVG, EOT ...)*
 
 1. **$ gulp favicon**
 
@@ -91,4 +86,3 @@ On commence par développer ce composant par le mobile.
   *(Gulp va générer le SCSS, KIT de la page suivant un model)*
 
   *(Gulp va remplacer les termes "lorem" du model par "name-of-page")*
-
