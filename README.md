@@ -7,7 +7,7 @@ Plusieurs concepts sont présents:
 **1. Component First**
 
 On commence par développer la composante de manière isolée, elle doit autant que faire ce peut être indépendante.
-C'est la raison pour laquelle chaque composant se trouve dans un dossier avec son JS (typescript), son HTML et son SCSS.
+C'est la raison pour laquelle chaque composant se trouve dans un dossier avec son JS (typescript), son HTML, ses images et son SCSS.
 
 **2. Styleguide First**
 
