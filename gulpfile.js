@@ -23,14 +23,18 @@ var sass         = require('gulp-sass');
 var file         = require('gulp-file');
 var gulp         = require('gulp');
 var reload       = browserSync.reload;
+var jsToMove     = [
+    'node_modules/jquery/dist/jquery.js'
+];
 var scssToMove   = [
     'node_modules/sanitize.css/dist/sanitize.css'
 ];
 
 
 /* TODO */
-// [ ] styleguide generator
+// [ ] styleguide update
 // [ ] vue.js ?
+// [ ] webpack
 
 
 /* *************************
@@ -46,14 +50,14 @@ var minify_html = false;
 /* *************************
     COMMANDS
 ************************* */
-//  gulp doThisJustOnce                        : when you start the project, be sure to config before.
+//  gulp doThisJustOnce                        : when you start the project.
 //  gulp img                                   : otpimize all images.
 //  gulp fonts                                 : move fonts.
-//  gulp component --options name-of-component : create a new component
-//  gulp structure --options name-of-structure : create a new structure
-//  gulp layout --options name-of-layout       : create a new layout
-//  gulp page --options name-of-page           : create a new page
-//  gulp favicon                               : convert a square logo to all favicons
+//  gulp component --options name-of-component : create a new component.
+//  gulp structure --options name-of-structure : create a new structure.
+//  gulp layout --options name-of-layout       : create a new layout.
+//  gulp page --options name-of-page           : create a new page.
+//  gulp favicon                               : convert a square logo to all favicons.
 
 
 
@@ -67,11 +71,14 @@ var minify_html = false;
     });
 
     gulp.task('move', function(){
+        gulp.src(jsToMove)
+        .pipe(gulp.dest('src/5-else/ts/libs/'));
+
         gulp.src(scssToMove)
         .pipe(rename(function (path) {
             path.extname = ".scss"
         }))
-        .pipe(gulp.dest('src/6-site/libs/'));
+        .pipe(gulp.dest('src/5-else/scss/libs/'));
     });
 
 
