@@ -65,13 +65,13 @@ On commence par développer ce composant par le mobile.
 
 1. **$gulp component --options name-of-component**
 
-  *(Gulp va générer le SCSS, KIT et TS du component suivant un model)*
+  *(Gulp va générer le SCSS, HTML et TS du component suivant un model)*
 
   *(Gulp va remplacer les termes "lorem" du model par "name-of-component")*
 
 1. **$ gulp structure --options name-of-structure**
 
-  *(Gulp va générer le SCSS, KIT de la structure suivant un model)*
+  *(Gulp va générer le SCSS, HTML de la structure suivant un model)*
 
   *(Gulp va remplacer les termes "lorem" du model par "name-of-structure")*
 
@@ -83,6 +83,6 @@ On commence par développer ce composant par le mobile.
 
 1. **$ gulp page --options name-of-page**
 
-  *(Gulp va générer le SCSS, KIT de la page suivant un model)*
+  *(Gulp va générer le SCSS, HTML de la page suivant un model)*
 
   *(Gulp va remplacer les termes "lorem" du model par "name-of-page")*
