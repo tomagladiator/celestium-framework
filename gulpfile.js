@@ -32,9 +32,9 @@ var scssToMove   = [
 
 
 /* TODO */
-// [ ] styleguide update
 // [ ] vue.js ?
 // [ ] webpack
+// [ ] js debug God
 
 
 /* *************************
@@ -43,6 +43,15 @@ var scssToMove   = [
 var minify_css  = false;
 var minify_js   = false;
 var minify_html = false;
+
+
+/* *************************
+    FUNCTIONS
+************************* */
+function handleError(err) {
+  console.log(err.toString());
+  this.emit('end');
+}
 
 
 
@@ -142,7 +151,6 @@ var minify_html = false;
         browserSync.reload
     });
 
-
     /* 3 - COMPILE html */
     gulp.task('html', function () {
         if(minify_html){
@@ -156,11 +164,7 @@ var minify_html = false;
         }
 
         return gulp.src(['./src/4-pages/**/*.html', '!src/4-pages/_name-of-page/_name-of-page.html'])
-            .pipe(fileinclude({
-                context: {
-                    isLogged: true
-                }
-            }))
+            .pipe(fileinclude().on('error', handleError))
             .pipe(html_refactoring)
             .pipe(inlinesource({
                 compress: true,
