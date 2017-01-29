@@ -23,7 +23,8 @@ var file         = require('gulp-file');
 var gulp         = require('gulp');
 var reload       = browserSync.reload;
 var jsToMove     = [
-    'node_modules/jquery/dist/jquery.js'
+    'node_modules/jquery/dist/jquery.min.js',
+    'node_modules/vue/dist/vue.min.js'
 ];
 var scssToMove   = [
     'node_modules/sanitize.css/dist/sanitize.css'
@@ -74,7 +75,7 @@ function handleError(err) {
     A - FIRST TIME
 ************************* */
     gulp.task('doThisJustOnce', [
-            'move', 'fonts', 'moveInline'
+            'move', 'fonts'
         ] , function() {
     });
 
@@ -195,8 +196,10 @@ function handleError(err) {
         return gulp.src(['src/**/*.ts', '!src/**/*.d.ts', '!src/5-else/ts/libs/**/*.js'])
 			.pipe(tslint({
 				formatter: "verbose"
-			}).on('error', handleError))
-			.pipe(tslint.report())
+			}))
+			.pipe(tslint.report({
+            	emitError: false
+        	}))
             .pipe(sourcemaps.init())
             .pipe(ts({
                 noImplicitAny: true,
