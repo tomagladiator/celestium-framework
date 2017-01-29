@@ -74,7 +74,7 @@ function handleError(err) {
     A - FIRST TIME
 ************************* */
     gulp.task('doThisJustOnce', [
-            'move', 'fonts', 'moveInline'
+            'move', 'fonts'
         ] , function() {
     });
 
