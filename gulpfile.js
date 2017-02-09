@@ -10,7 +10,6 @@ var prettify     = require('gulp-prettify');
 var favicons     = require("gulp-favicons");
 var htmlmin      = require('gulp-htmlmin');
 var browserSync  = require('browser-sync');
-var csscomb      = require('gulp-csscomb');
 var cssmin       = require('gulp-cssnano');
 var replace      = require('gulp-replace');
 var concat       = require('gulp-concat');
@@ -24,7 +23,8 @@ var file         = require('gulp-file');
 var gulp         = require('gulp'); 
 var reload       = browserSync.reload;
 var jsToMove     = [
-    'node_modules/jquery/dist/jquery.js'
+    'node_modules/jquery/dist/jquery.min.js',
+    'node_modules/vue/dist/vue.min.js'
 ];
 var scssToMove   = [
     'node_modules/sanitize.css/dist/sanitize.css'
@@ -32,8 +32,8 @@ var scssToMove   = [
 
 
 /* TODO */
-// [ ] vue.js ?
-// [ ] webpack
+// [ ] vue.js
+// [ ] webpack ?
 // [ ] js debug God
 
 
@@ -89,8 +89,6 @@ function handleError(err) {
         }))
         .pipe(gulp.dest('src/5-else/scss/libs/'));
     });
-
-
 
 
 
@@ -169,7 +167,7 @@ function handleError(err) {
             .pipe(inlinesource({
                 compress: true,
                 rootpath: './dist/'
-            }))
+            }).on('error', handleError))
             .pipe(rename({dirname: ''}))
             .pipe(gulp.dest('./dist/'))
             .pipe(browserSync.stream());
@@ -186,7 +184,7 @@ function handleError(err) {
 
         return gulp.src('src/5-else/ts/libs/**/*.js')
             .pipe(sourcemaps.init())
-            .pipe(rename("script-head.js"))
+			.pipe(concat('script-head.js'))
             .pipe(js_refactoring)
             .pipe(sourcemaps.write('.'))
             .pipe(gulp.dest('dist/js'));
@@ -195,11 +193,13 @@ function handleError(err) {
 
     /* 5 - COMPILE ts */
     gulp.task('jsFoot', function () {
-        return gulp.src(['src/**/*.ts', '!src/**/*.d.ts', '!src/**/*.js', '!src/5-else/ts/libs/**/*.js'])
-            .pipe(tslint())
-            .pipe(tslint.report('verbose', {
-                emitError: false
-            }))
+        return gulp.src(['src/**/*.ts', '!src/**/*.d.ts', '!src/5-else/ts/libs/**/*.js'])
+			.pipe(tslint({
+				formatter: "verbose"
+			}))
+			.pipe(tslint.report({
+            	emitError: false
+        	}))
             .pipe(sourcemaps.init())
             .pipe(ts({
                 noImplicitAny: true,
