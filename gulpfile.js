@@ -21,7 +21,7 @@ var watch        = require('gulp-watch');
 var gutil        = require('gulp-util');
 var sass         = require('gulp-sass');
 var file         = require('gulp-file');
-var gulp         = require('gulp');
+var gulp         = require('gulp'); 
 var reload       = browserSync.reload;
 var jsToMove     = [
     'node_modules/jquery/dist/jquery.js'
