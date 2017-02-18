@@ -212,13 +212,14 @@ function handleError(err) {
 
     /* 6 - COMPRESS img */
     gulp.task('img', () => {
-        return gulp.src(['src/**/*.jpg', 'src/**/*.png', 'src/**/*.gif', 'src/**/*.jpeg'])
+        return gulp.src(['src/**/*.jpg', 'src/**/*.png', 'src/**/*.gif', 'src/**/*.jpeg', '!src/5-else/img/favicon.png'])
             .pipe(imagemin({
                 progressive: true,
                 svgoPlugins: [{removeViewBox: false}],
                 use: [pngquant()]
             }))
             .pipe(gulp.dest('dist/img'))
+	    .pipe(gulp.dest('dist/img'))
             .pipe(browserSync.stream());
     });
 
